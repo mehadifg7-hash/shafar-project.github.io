@@ -2,57 +2,84 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Shafar Project Social Enterprise</title>
+    <title>Shafar Project - Master 10x24 Kiosk Dashboard</title>
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; background: #f0f4f2; color: #333; }
-        header { background: #004D40; color: #ffffff; padding: 35px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-        header h1 { margin: 0; font-size: 46px; font-weight: bold; letter-spacing: 1.5px; }
-        .tag { font-size: 16px; color: #FFC107; font-weight: bold; margin-top: 8px; letter-spacing: 0.5px; }
+        /* ফিক্সড ১ পাতার ১০"x২৪" ব্যানার রেশিও সেটআপ */
+        body { 
+            font-family: sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background: #f0f4f2; 
+            color: #333;
+            overflow-x: hidden;
+        }
         
-        /* Massive Expanded Container */
-        .box { max-width: 1200px; margin: 30px auto; padding: 35px; border: 1px solid #ddd; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
-        
-        /* Language Block Hierarchies */
-        .lang-block { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 4px dashed #004D40; }
-        .section-title-en { color: #004D40; border-bottom: 4px solid #004D40; padding-bottom: 10px; margin: 45px 0 25px 0; font-size: 28px; font-weight: bold; letter-spacing: 0.5px; }
-        .section-title-bn { color: #00796B; border-bottom: 2px solid #00796B; padding-bottom: 6px; margin: 35px 0 15px 0; font-size: 19px; font-weight: bold; }
+        header { 
+            background: #004D40; 
+            color: #ffffff; 
+            padding: 20px; 
+            text-align: center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+        }
+        header h1 { margin: 0; font-size: 36px; font-weight: bold; }
+        .tag { font-size: 15px; color: #FFC107; font-weight: bold; margin-top: 5px; }
 
-        /* English Layout Styles (Top - Extra Large Fonts) */
-        .banner-en { background: linear-gradient(135deg, #004D40, #00796B); color: white; padding: 45px; text-align: center; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .banner-en h2 { font-size: 34px; font-weight: bold; margin: 0 0 12px 0; line-height: 1.3; }
-        .banner-en p { font-size: 18px; margin: 0 0 20px 0; opacity: 0.9; }
-        .btn { display: inline-block; background: #FFC107; color: #004D40; padding: 15px 35px; font-weight: bold; text-decoration: none; border-radius: 6px; margin: 5px; border: none; cursor: pointer; font-size: 17px; text-align: center; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .btn:hover { background: #ffe082; transform: translateY(-2px); }
-        .title-en { font-size: 24px; font-weight: bold; color: #004D40; margin: 0 0 12px 0; }
-        .desc-en { font-size: 16px; line-height: 1.6; color: #444; }
-        .price-en { font-size: 26px; font-weight: bold; color: #004D40; margin: 15px 0; }
-        .notice-en { background: #f9f9f9; border-left: 6px solid #004D40; padding: 20px; margin-top: 30px; font-size: 15px; color: #444; line-height: 1.6; border-radius: 4px; }
+        /* প্রধান ২-কলাম লেআউট (বাম পাশে ইংরেজি, ডান পাশে বাংলা) */
+        .main-canvas { 
+            display: grid; 
+            grid-template-columns: 55% 45%; /* ইংরেজি বড় ৫৫%, বাংলা ছোট ৪৫% */
+            max-width: 1400px; 
+            margin: 20px auto; 
+            gap: 20px; 
+            padding: 0 20px;
+        }
 
-        /* Bengali Layout Styles (Bottom - Small & Compact Fonts) */
-        .banner-bn { background: #004D40; color: white; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; opacity: 0.95; }
-        .banner-bn h2 { font-size: 18px; font-weight: normal; margin: 0 0 8px 0; }
-        .banner-bn p { font-size: 13px; margin: 0 0 12px 0; }
-        .btn-bn { display: inline-block; background: #FFC107; color: #004D40; padding: 9px 20px; text-decoration: none; border-radius: 4px; margin: 5px; border: none; cursor: pointer; font-size: 12px; text-align: center; font-weight: bold; }
-        .title-bn { font-size: 15px; font-weight: bold; color: #004D40; margin: 0 0 6px 0; }
-        .desc-bn { font-size: 12px; line-height: 1.4; color: #555; }
-        .price-bn { font-size: 16px; font-weight: bold; color: #004D40; margin: 8px 0; }
-        .notice-bn { background: #f9f9f9; border-left: 5px solid #00796B; padding: 12px; margin-top: 15px; font-size: 11px; color: #666; line-height: 1.4; border-radius: 4px; }
+        .column-en { 
+            background: #ffffff; 
+            padding: 25px; 
+            border-radius: 12px; 
+            border: 2px solid #004D40;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
         
-        /* Responsive Grid Columns */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card { border: 1px solid #e2e8f0; padding: 25px; text-align: center; background: white; border-radius: 8px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: 0.3s; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 6px 12px rgba(0,0,0,0.06); }
+        .column-bn { 
+            background: #fafafa; 
+            padding: 20px; 
+            border-radius: 12px; 
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        /* ব্যানার ও টাইপোগ্রাফি কন্ট্রোল */
+        .banner-en { background: #004D40; color: white; padding: 25px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+        .banner-en h2 { font-size: 26px; margin: 0 0 10px 0; }
+        .banner-en p { font-size: 15px; margin: 0 0 15px 0; }
+
+        .banner-bn { background: #00796B; color: white; padding: 15px; text-align: center; border-radius: 8px; margin-bottom: 15px; }
+        .banner-bn h2 { font-size: 16px; margin: 0 0 5px 0; font-weight: normal; }
+        .banner-bn p { font-size: 12px; margin: 0; }
+
+        .btn { display: inline-block; background: #FFC107; color: #004D40; padding: 12px 25px; font-weight: bold; text-decoration: none; border-radius: 5px; margin: 5px; border: none; cursor: pointer; font-size: 14px; }
+        .btn-bn { display: inline-block; background: #FFC107; color: #004D40; padding: 8px 15px; text-decoration: none; border-radius: 4px; margin: 3px; border: none; cursor: pointer; font-size: 11px; font-weight: bold; }
+
+        .section-title-en { color: #004D40; border-bottom: 3px solid #004D40; padding-bottom: 5px; margin: 25px 0 15px 0; font-size: 22px; font-weight: bold; }
+        .section-title-bn { color: #00796B; border-bottom: 2px solid #00796B; padding-bottom: 4px; margin: 20px 0 10px 0; font-size: 15px; font-weight: bold; }
+
+        .grid-v { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .card { border: 1px solid #e2e8f0; padding: 15px; background: white; border-radius: 8px; text-align: left; }
+        .card-bn { border: 1px solid #e2e8f0; padding: 10px; background: white; border-radius: 6px; text-align: left; font-size: 12px; }
+
+        .price-en { font-size: 20px; font-weight: bold; color: #004D40; margin: 5px 0; }
+        .price-bn { font-size: 14px; font-weight: bold; color: #00796B; margin: 3px 0; }
+
+        .notice-en { background: #f9f9f9; border-left: 5px solid #004D40; padding: 15px; margin-top: 25px; font-size: 13px; color: #555; }
+        .notice-bn { background: #f9f9f9; border-left: 4px solid #00796B; padding: 10px; margin-top: 15px; font-size: 10px; color: #666; }
     </style>
     <script>
         const googleAppsScriptUrl = "https://google.com";
 
         function sendOrderFromWeb(orderId, orderValue, shopName, category, lang) {
-            if(lang === 'bn') {
-                alert("অর্ডারের তথ্য লাইভ গুগল শিটে পাঠানো হচ্ছে... অনুগ্রহ করে ১ সেকেন্ড অপেক্ষা করুন।");
-            } else {
-                alert("Routing order data package to Google Sheet... Please wait 1 second.");
-            }
-            
+            alert(lang === 'bn' ? "ডাটা পাঠানো হচ্ছে..." : "Syncing live data packet...");
             fetch(googleAppsScriptUrl, {
                 method: "POST",
                 mode: "no-cors",
@@ -65,23 +92,11 @@
                     "merchantId": "SF-MER-UNLIMITED",
                     "shopName": shopName,
                     "shopCategory": category,
-                    "geographicZone": "Web Interactive Dashboard Node"
+                    "geographicZone": "Web 10x24 Kiosk Node"
                 })
             }).then(() => {
-                if(lang === 'bn') {
-                    alert("সফলভাবে ট্রানজেকশন তথ্য ৭০/৩০ আইনি মডেলে লাইভ গুগল শিটে আপডেট হয়েছে!");
-                } else {
-                    alert("Success! Operational metrics synced live to your master Google Sheet ledger row!");
-                }
+                alert(lang === 'bn' ? "শিটে সফলভাবে আপলোড হয়েছে!" : "Successfully synced to Google Sheet!");
             });
-        }
-
-        function triggerRegistrationAlert(channelType, lang) {
-            if(lang === 'bn') {
-                alert("নিবন্ধন ফর্মটি উন্মুক্ত করা হচ্ছে... আপনার তথ্য ডাটাবেজের ভলান্টিয়ার শিটে যুক্ত হবে।");
-            } else {
-                alert("Opening registration channel portal... Routing data to master volunteer sheet block.");
-            }
         }
     </script>
 </head>
@@ -89,73 +104,83 @@
 
 <header>
     <h1>SHAFAR PROJECT™ (সফর)</h1>
-    <div class="tag">FOUNDER & CHAIRMAN: Md Omar Faruque • NID: PROTECTED_SECURE • T+1 ESCROW COMPLIANT</div>
+    <div class="tag">FOUNDER & CHAIRMAN: Md Omar Faruque • NID: PROTECTED • T+1 ESCROW SYSTEM</div>
 </header>
 
-<div class="box">
+<div class="main-canvas">
 
-    <!-- ==================== 1. ENGLISH SECTION (TOP & EXTRA LARGE FONTS) ==================== -->
-    <div class="lang-block">
+    <!-- ==================== বাম কলাম: ইংরেজি সংস্করণ (LARGE FONTS) ==================== -->
+    <div class="column-en">
         <div class="banner-en">
-            <h2>Dhaka's First 100% Transparent Open-Ledger Multi-Category Logistic Grid</h2>
-            <p>Supporting Unlimited Restaurants, Groceries & Pharmacies with Capped 5% Net Operational Profit Margins via our online platform.</p>
-            <button onclick="window.open('https://google.com', '_blank')" class="btn">📊 VIEW LIVE PUBLIC GOOGLE SHEET LEDGER</button>
+            <h2>Open-Ledger Multi-Category Logistic Grid</h2>
+            <p>Supporting Unlimited Merchants via our online platform with Capped 5% Net Margins.</p>
+            <button onclick="window.open('https://google.com', '_blank')" class="btn">📊 VIEW LIVE GOOGLE SHEET LEDGER</button>
         </div>
 
-        <div class="section-title-en">🏪 FEATURED MERCHANT FOOD & RETAIL ADS</div>
-        <div class="grid">
+        <div class="section-title-en">🏪 MERCHANT MARKETPLACE</div>
+        <div class="grid-v">
             <div class="card">
-                <div>
-                    <h3 class="title-en">Neapolitan Wood-Fired Pizza</h3>
-                    <p class="desc-en">Authentic fire-baked crust from Pizza Circle (Kalachadpur Main Road) with premium cheese and virgin olive oil drizzle.</p>
-                </div>
-                <div>
-                    <div class="price-en">1,250 BDT</div>
-                    <button onclick="sendOrderFromWeb('SF-WEB-E101', 1250.00, 'Pizza Circle', 'RESTAURANT', 'en')" class="btn">ORDER & TEST LIVE SYNC</button>
-                </div>
+                <strong style="color:#004D40; font-size:18px;">Neapolitan Wood-Fired Pizza</strong>
+                <p style="margin:5px 0; font-size:14px; color:#555;">Authentic fire-baked crust from Pizza Circle (Kalachadpur Main Road).</p>
+                <div class="price-en">1,250 BDT</div>
+                <button onclick="sendOrderFromWeb('SF-WEB-E101', 1250.00, 'Pizza Circle', 'RESTAURANT', 'en')" class="btn">ORDER & SYNC TEST</button>
             </div>
-            
             <div class="card">
-                <div>
-                    <h3 class="title-en">Premium Miniket Rice</h3>
-                    <p class="desc-en">Sourced directly from local neighborhood grocery stores. Premium grade polished Miniket rice, completely stone-free.</p>
-                </div>
-                <div>
-                    <div class="price-en">3,400 BDT</div>
-                    <button onclick="sendOrderFromWeb('SF-WEB-E102', 3400.00, 'Mudir Dokan', 'GROCERY', 'en')" class="btn">ORDER & TEST LIVE SYNC</button>
-                </div>
+                <strong style="color:#004D40; font-size:18px;">Premium Miniket Rice</strong>
+                <p style="margin:5px 0; font-size:14px; color:#555;">Sourced directly from local neighborhood grocery stores.</p>
+                <div class="price-en">3,400 BDT</div>
+                <button onclick="sendOrderFromWeb('SF-WEB-E102', 3400.00, 'Mudir Dokan', 'GROCERY', 'en')" class="btn">ORDER & SYNC TEST</button>
             </div>
-
             <div class="card">
-                <div>
-                    <h3 class="title-en">Emergency Medicine Kit</h3>
-                    <p class="desc-en">Direct live synchronization to local area central pharmacies. Insulated fast packaging safely optimized for immediate neighborhood networks.</p>
-                </div>
-                <div>
-                    <div class="price-en">99 BDT</div>
-                    <button onclick="sendOrderFromWeb('SF-WEB-E103', 99.00, 'Central Pharmacy', 'PHARMACY', 'en')" class="btn">ORDER & TEST LIVE SYNC</button>
-                </div>
+                <strong style="color:#004D40; font-size:18px;">Emergency Medicine Kit</strong>
+                <p style="margin:5px 0; font-size:14px; color:#555;">Live synchronization to local area central pharmacies.</p>
+                <div class="price-en">99 BDT</div>
+                <button onclick="sendOrderFromWeb('SF-WEB-E103', 99.00, 'Central Pharmacy', 'PHARMACY', 'en')" class="btn">ORDER & SYNC TEST</button>
             </div>
         </div>
 
-        <div class="section-title-en">🎓 CAMPUS VOLUNTEER & ECOSYSTEM CHANNELS</div>
-        <div class="grid">
-            <div class="card">
-                <div>
-                    <h3 class="title-en">Student Volunteer Recruitment</h3>
-                    <p class="desc-en">University students can register instantly to join our flexible delivery grids. Real-time payouts with absolute transparency matrices.</p>
-                </div>
-                <button onclick="triggerRegistrationAlert('STUDENT', 'en')" class="btn">REGISTER AS CAMPUS RIDER</button>
-            </div>
-            
-            <div class="card">
-                <div>
-                    <h3 class="title-en">Ecosystem Shop Onboarding</h3>
-                    <p class="desc-en">Local neighborhood tea stalls, food carts, and vendors can connect directly to map fixed low service fees under our custom charter codes.</p>
-                </div>
-                <button onclick="triggerRegistrationAlert('SHOP', 'en')" class="btn">ONBOARD YOUR SHOP NOW</button>
+        <div class="section-title-en">🎓 CAMPUS CHANNELS</div>
+        <div class="grid-v">
+            <div class="card" style="padding:12px;">
+                <span style="font-size:15px; font-weight:bold;">Student Volunteer:</span>
+                <span style="font-size:13px; color:#666;"> Join our flexible delivery grid.</span>
             </div>
         </div>
 
         <div class="notice-en">
-            <b>OFFICIAL LEGAL COMPLIANCE NOTICE:</b><br>
+            <b>OFFICIAL COMPLIANCE NOTICE:</b> operates under Partnership Act, 1932 bound to a 70% operational and 30% technical split structure under Chairman Md Omar Faruque.
+        </div>
+    </div>
+
+    <!-- ==================== ডান কলাম: বাংলা সংস্করণ (SMALL FONTS) ==================== -->
+    <div class="column-bn">
+        <div class="banner-bn">
+            <h2>১০০% স্বচ্ছ ওপেন-লেজার লজিস্টিক নেটওয়ার্ক</h2>
+            <p>আমাদের অনলাইন প্ল্যাটফর্মের মাধ্যমে ১০ থেকে ১০,০০০+ মার্চেন্ট সার্ভিস ট্র্যাক করুন।</p>
+            <button onclick="window.open('https://google.com', '_blank')" class="btn-bn">📊 লাইভ পাবলিক লেজার চেক করুন</button>
+        </div>
+
+        <div class="section-title-bn">🏪 পার্টনার মার্চেন্ট এবং রিটেল শপ তালিকা</div>
+        <div class="grid-v">
+            <div class="card-bn">
+                <div style="font-weight:bold; color:#004D40;">নেপোলিটান উড-ফায়ার্ড পিজ্জা</div>
+                <div style="color:#666; margin:3px 0;">পিজ্জা সার্কেল (কালাচাঁদপুর মেইন রোড) থেকে আসল উড-ফায়ার্ড পিজ্জা।</div>
+                <div class="price-bn">১,২৫০ টাকা</div>
+                <button onclick="sendOrderFromWeb('SF-WEB-B101', 1250.00, 'Pizza Circle', 'RESTAURANT', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
+            </div>
+            <div class="card-bn">
+                <div style="font-weight:bold; color:#004D40;">মিনিকেট চাল (বাল্ক প্যাক)</div>
+                <div style="color:#666; margin:3px 0;">কালাচাঁদপুর এলাকার স্থানীয় মুদি দোকান থেকে সরাসরি সংগৃহীত।</div>
+                <div class="price-bn">৩,৪০০ টাকা</div>
+                <button onclick="sendOrderFromWeb('SF-WEB-B102', 3400.00, 'Mudir Dokan', 'GROCERY', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
+            </div>
+            <div class="card-bn">
+                <div style="font-weight:bold; color:#004D40;">জরুরি মেডিসিন বক্স কম্বো</div>
+                <div style="color:#666; margin:3px 0;">আশেপাশের এলাকার কেন্দ্রীয় ফার্মেসী স্টক লগের সাথে লাইভ সিঙ্ক।</div>
+                <div class="price-bn">৯৯ টাকা</div>
+                <button onclick="sendOrderFromWeb('SF-WEB-B103', 99.00, 'Central Pharmacy', 'PHARMACY', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
+            </div>
+        </div>
+
+        <div class="section-title-bn">🎓 স্টুডেন্ট ভলান্টিয়ার এবং ইকোসিস্টেম হাব</div>
+        <div class="grid-v">
