@@ -10,33 +10,33 @@
         .tag { font-size: 15px; color: #FFC107; font-weight: bold; margin-top: 5px; }
         .box { max-width: 1000px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; }
         
-        /* Language Block Constraints */
-        .lang-block { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px dashed #004D40; }
+        /* Language Block Hierarchies */
+        .lang-block { margin-bottom: 50px; padding-bottom: 30px; border-bottom: 3px dashed #004D40; }
+        .section-title-en { color: #004D40; border-bottom: 3px solid #004D40; padding-bottom: 8px; margin: 35px 0 20px 0; font-size: 24px; font-weight: bold; }
+        .section-title-bn { color: #00796B; border-bottom: 2px solid #00796B; padding-bottom: 6px; margin: 25px 0 15px 0; font-size: 18px; font-weight: bold; }
+
+        /* English Layout Styles (Top - Large Fonts) */
         .banner-en { background: #004D40; color: white; padding: 35px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
         .banner-en h2 { font-size: 28px; font-weight: bold; margin: 0 0 10px 0; }
         .banner-en p { font-size: 16px; margin: 0 0 15px 0; }
-        
-        .banner-bn { background: #004D40; color: white; padding: 25px; text-align: center; border-radius: 8px; margin-bottom: 20px; opacity: 0.95; }
-        .banner-bn h2 { font-size: 20px; font-weight: normal; margin: 0 0 8px 0; }
-        .banner-bn p { font-size: 13px; margin: 0 0 12px 0; }
-        
-        .btn { display: inline-block; background: #FFC107; color: #004D40; padding: 12px 28px; font-weight: bold; text-decoration: none; border-radius: 5px; margin: 5px; border: none; cursor: pointer; font-size: 15px; }
-        .btn-bn { display: inline-block; background: #FFC107; color: #004D40; padding: 10px 22px; text-decoration: none; border-radius: 5px; margin: 5px; border: none; cursor: pointer; font-size: 12px; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { border: 1px solid #ddd; padding: 20px; text-align: center; background: white; border-radius: 6px; }
-        
-        /* Typography Size Tuning */
+        .btn { display: inline-block; background: #FFC107; color: #004D40; padding: 12px 28px; font-weight: bold; text-decoration: none; border-radius: 5px; margin: 5px; border: none; cursor: pointer; font-size: 15px; text-align: center; }
         .title-en { font-size: 22px; font-weight: bold; color: #004D40; margin: 0 0 10px 0; }
         .desc-en { font-size: 15px; line-height: 1.5; color: #444; }
         .price-en { font-size: 24px; font-weight: bold; color: #004D40; margin: 15px 0; }
-        
+        .notice-en { background: #f5f5f5; border-left: 5px solid #004D40; padding: 15px; margin-top: 20px; font-size: 14px; color: #444; line-height: 1.5; }
+
+        /* Bengali Layout Styles (Bottom - Small Fonts) */
+        .banner-bn { background: #004D40; color: white; padding: 25px; text-align: center; border-radius: 8px; margin-bottom: 20px; opacity: 0.95; }
+        .banner-bn h2 { font-size: 20px; font-weight: normal; margin: 0 0 8px 0; }
+        .banner-bn p { font-size: 13px; margin: 0 0 12px 0; }
+        .btn-bn { display: inline-block; background: #FFC107; color: #004D40; padding: 10px 22px; text-decoration: none; border-radius: 5px; margin: 5px; border: none; cursor: pointer; font-size: 12px; text-align: center; }
         .title-bn { font-size: 16px; font-weight: bold; color: #004D40; margin: 0 0 8px 0; }
         .desc-bn { font-size: 12px; line-height: 1.4; color: #555; }
         .price-bn { font-size: 18px; font-weight: bold; color: #004D40; margin: 10px 0; }
-        
-        .notice-en { background: #f5f5f5; border-left: 5px solid #004D40; padding: 15px; margin-top: 20px; font-size: 14px; color: #444; line-height: 1.5; }
         .notice-bn { background: #f5f5f5; border-left: 5px solid #00796B; padding: 12px; margin-top: 15px; font-size: 11px; color: #666; line-height: 1.4; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { border: 1px solid #ddd; padding: 20px; text-align: center; background: white; border-radius: 6px; display: flex; flex-direction: column; justify-content: space-between; }
     </style>
     <script>
         const googleAppsScriptUrl = "https://google.com";
@@ -70,6 +70,14 @@
                 }
             });
         }
+
+        function triggerRegistrationAlert(channelType, lang) {
+            if(lang === 'bn') {
+                alert("নিবন্ধন ফর্মটি উন্মুক্ত করা হচ্ছে... আপনার তথ্য ডাটাবেজের ভলান্টিয়ার শিটে যুক্ত হবে।");
+            } else {
+                alert("Opening registration channel portal... Routing data to master volunteer sheet block.");
+            }
+        }
     </script>
 </head>
 <body>
@@ -81,27 +89,66 @@
 
 <div class="box">
 
-    <!-- ==================== MAIN ENGLISH SECTION (LARGE FONTS) ==================== -->
+    <!-- ==================== 1. ENGLISH SECTION (TOP & LARGE FONTS) ==================== -->
     <div class="lang-block">
         <div class="banner-en">
             <h2>Dhaka's First 100% Transparent Open-Ledger Multi-Category Logistic Grid</h2>
-            <p>Supporting Unlimited Restaurants, Groceries & Pharmacies with Capped 5% Net Operational Profit Margins.</p>
-            <button onclick="window.open('https://google.com', '_blank')" class="btn">汇 VIEW LIVE PUBLIC GOOGLE SHEET LEDGER</button>
+            <p>Supporting Unlimited Restaurants, Groceries & Pharmacies with Capped 5% Net Operational Profit Margins via our online platform.</p>
+            <button onclick="window.open('https://google.com', '_blank')" class="btn">📊 VIEW LIVE PUBLIC GOOGLE SHEET LEDGER</button>
         </div>
 
+        <div class="section-title-en">🏪 FEATURED MERCHANT FOOD & RETAIL ADS</div>
         <div class="grid">
             <div class="card">
-                <h3 class="title-en">Neapolitan Wood-Fired Pizza</h3>
-                <p class="desc-en">Authentic fire-baked crust from Pizza Circle (Kalachadpur Main Road) with premium cheese and virgin olive oil drizzle.</p>
-                <div class="price-en">1,250 BDT</div>
-                <button onclick="sendOrderFromWeb('SF-WEB-E101', 1250.00, 'Pizza Circle', 'RESTAURANT', 'en')" class="btn">ORDER & TEST LIVE SYNC</button>
+                <div>
+                    <h3 class="title-en">Neapolitan Wood-Fired Pizza</h3>
+                    <p class="desc-en">Authentic fire-baked crust from Pizza Circle (Kalachadpur Main Road) with premium cheese and virgin olive oil drizzle.</p>
+                </div>
+                <div>
+                    <div class="price-en">1,250 BDT</div>
+                    <button onclick="sendOrderFromWeb('SF-WEB-E101', 1250.00, 'Pizza Circle', 'RESTAURANT', 'en')" class="btn">ORDER & TEST LIVE SYNC</button>
+                </div>
             </div>
             
             <div class="card">
-                <h3 class="title-en">Premium Miniket Rice</h3>
-                <p class="desc-en">Sourced directly from local neighborhood grocery stores. Premium grade polished Miniket rice, completely stone-free.</p>
-                <div class="price-en">3,400 BDT</div>
-                <button onclick="sendOrderFromWeb('SF-WEB-E102', 3400.00, 'Mudir Dokan', 'GROCERY', 'en')" class="btn">ORDER & TEST LIVE SYNC</button>
+                <div>
+                    <h3 class="title-en">Premium Miniket Rice</h3>
+                    <p class="desc-en">Sourced directly from local neighborhood grocery stores. Premium grade polished Miniket rice, completely stone-free.</p>
+                </div>
+                <div>
+                    <div class="price-en">3,400 BDT</div>
+                    <button onclick="sendOrderFromWeb('SF-WEB-E102', 3400.00, 'Mudir Dokan', 'GROCERY', 'en')" class="btn">ORDER & TEST LIVE SYNC</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3 class="title-en">Emergency Medicine Kit</h3>
+                    <p class="desc-en">Direct live synchronization to local area central pharmacies. Insulated fast packaging safely optimized for immediate neighborhood networks.</p>
+                </div>
+                <div>
+                    <div class="price-en">450 BDT</div>
+                    <button onclick="sendOrderFromWeb('SF-WEB-E103', 450.00, 'Central Pharmacy', 'PHARMACY', 'en')" class="btn">ORDER & TEST LIVE SYNC</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title-en">🎓 CAMPUS VOLUNTEER & ECOSYSTEM CHANNELS</div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <h3 class="title-en">Student Volunteer Recruitment</h3>
+                    <p class="desc-en">University students can register instantly to join our flexible delivery grids. Real-time payouts with absolute transparency matrices.</p>
+                </div>
+                <button onclick="triggerRegistrationAlert('STUDENT', 'en')" class="btn">REGISTER AS CAMPUS RIDER</button>
+            </div>
+            
+            <div class="card">
+                <div>
+                    <h3 class="title-en">Ecosystem Shop Onboarding</h3>
+                    <p class="desc-en">Local neighborhood tea stalls, food carts, and vendors can connect directly to map fixed low service fees under our custom charter codes.</p>
+                </div>
+                <button onclick="triggerRegistrationAlert('SHOP', 'en')" class="btn">ONBOARD YOUR SHOP NOW</button>
             </div>
         </div>
 
@@ -112,37 +159,7 @@
     </div>
 
 
-    <!-- ==================== SECONDARY BENGALI SECTION (SMALLER FONTS) ==================== -->
+    <!-- ==================== 2. BENGALI SECTION (BOTTOM & SMALLER FONTS) ==================== -->
     <div class="lang-block" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
         <div class="banner-bn">
             <h2>বাংলাদেশের প্রথম ১০০% স্বচ্ছ ওপেন-লেজার লজিস্টিক নেটওয়ার্ক</h2>
-            <p>১০ থেকে ১০,০০০+ আনলিমিটেড রেস্তোরাঁ, মুদি দোকান ও ফার্মেসী সাপোর্ট ইঞ্জিন।</p>
-            <button onclick="window.open('https://google.com', '_blank')" class="btn-bn">📊 লাইভ পাবলিক লেজার চেক করুন</button>
-        </div>
-
-        <div class="grid">
-            <div class="card" style="padding: 15px;">
-                <h3 class="title-bn">নেপোলিটান উড-ফায়ার্ড পিজ্জা</h3>
-                <p class="desc-bn">পিজ্জা সার্কেল (কালাচাঁদপুর মেইন রোড) থেকে প্রিমিয়াম চিজ ও ফ্রেশ বেসিল সমৃদ্ধ আসল উড-ফায়ার্ড পিজ্জা।</p>
-                <div class="price-bn">১,২৫০ টাকা</div>
-                <button onclick="sendOrderFromWeb('SF-WEB-B101', 1250.00, 'Pizza Circle', 'RESTAURANT', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
-            </div>
-            
-            <div class="card" style="padding: 15px;">
-                <h3 class="title-bn">মিনিকেট চাল (বাল্ক প্যাক)</h3>
-                <p class="desc-bn">কালাচাঁদপুর এলাকার স্থানীয় মুদি দোকান থেকে সরাসরি সংগৃহীত। পাথর মুক্ত সম্পূর্ণ ফ্রেশ নতুন ফসলের চাল।</p>
-                <div class="price-bn">৩,৪০০ টাকা</div>
-                <button onclick="sendOrderFromWeb('SF-WEB-B102', 3400.00, 'Mudir Dokan', 'GROCERY', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
-            </div>
-        </div>
-
-        <div class="notice-bn">
-            <b>অফিশিয়াল আইনি কমপ্লায়েন্স নোটিশ:</b><br>
-            সফর প্রজেক্টটি চেয়ারম্যান Md Omar Faruque-এর একক নির্বাহী নেতৃত্বে পার্টনারশিপ অ্যাক্ট, ১৯৩২ অনুযায়ী পরিচালিত একটি সামাজিক ব্যবসা। এই প্রতিষ্ঠানটি কঠোরভাবে সর্বোচ্চ ৫% সীমিত রেভিনিউ মার্জিন সীমা মেনে চলে। সমস্ত আয়ের হিসাব স্বয়ংক্রিয়ভাবে ৭০% অপারেশনাল এবং ৩০% কারিগরি কাঠামোতে ১ দিনের এসক্রো লক (T+1 System) মেনে লাইভ গুগল শিটে আপডেট হয়। কাস্টমারদের ডাটা সিকিউরিটি সম্পূর্ণ এনক্রিপ্টেড।
-        </div>
-    </div>
-
-</div>
-
-</body>
-</html>
