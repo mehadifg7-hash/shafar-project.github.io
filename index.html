@@ -24,23 +24,27 @@
         .banner-bn p { font-size: 12px; margin: 0; }
 
         .btn { display: inline-block; background: #FFC107; color: #004D40; padding: 12px 25px; font-weight: bold; text-decoration: none; border-radius: 5px; margin: 5px; border: none; cursor: pointer; font-size: 14px; text-align: center; }
-        .btn-bn { display: inline-block; background: #FFC107; color: #004D40; padding: 8px 15px; text-decoration: none; border-radius: 4px; margin: 3px; border: none; cursor: pointer; font-size: 11px; font-weight: bold; text-align: center; }
+        .btn-bn { display: inline-block; background: #FFC107; color: #004D40; padding: 8px 15px; text-decoration: none; border-radius: 4px; margin: 5px 0 0 0; border: none; cursor: pointer; font-size: 11px; font-weight: bold; text-align: center; width: 100%; box-sizing: border-box; }
 
         .section-title-en { color: #004D40; border-bottom: 3px solid #004D40; padding-bottom: 5px; margin: 25px 0 15px 0; font-size: 22px; font-weight: bold; }
         .section-title-bn { color: #00796B; border-bottom: 2px solid #00796B; padding-bottom: 4px; margin: 20px 0 10px 0; font-size: 15px; font-weight: bold; }
 
         .grid-v { display: grid; grid-template-columns: 1fr; gap: 15px; }
         .card { border: 1px solid #e2e8f0; padding: 15px; background: white; border-radius: 8px; text-align: left; }
-        .card-bn { border: 1px solid #e2e8f0; padding: 10px; background: white; border-radius: 6px; text-align: left; font-size: 12px; }
+        .card-bn { border: 1px solid #e2e8f0; padding: 12px; background: white; border-radius: 6px; text-align: left; font-size: 12px; margin-bottom: 5px; }
+
+        /* ডাটা ভিজ্যুয়াল টেক্সট গ্যাপ কন্ট্রোল */
+        .card-title-bn { font-weight: bold; color: #004D40; font-size: 14px; margin-bottom: 6px; }
+        .card-desc-bn { color: #555; font-size: 12px; line-height: 1.5; margin-bottom: 8px; }
 
         .price-en { font-size: 20px; font-weight: bold; color: #004D40; margin: 5px 0; }
-        .price-bn { font-size: 14px; font-weight: bold; color: #00796B; margin: 3px 0; }
+        .price-bn { font-size: 14px; font-weight: bold; color: #00796B; margin: 3px 0 8px 0; }
         .notice-en { background: #f9f9f9; border-left: 5px solid #004D40; padding: 15px; margin-top: 25px; font-size: 13px; color: #555; }
-        .notice-bn { background: #f9f9f9; border-left: 4px solid #00796B; padding: 10px; margin-top: 15px; font-size: 10px; color: #666; }
+        .notice-bn { background: #f9f9f9; border-left: 4px solid #00796B; padding: 10px; margin-top: 15px; font-size: 11px; color: #666; line-height: 1.4; }
     </style>
     <script>
         // Md Omar Faruque-এর নতুন ভেরিফাইড এবং সচল এপিআই লিংক এখানে সফলভাবে এম্বেড করা হয়েছে
-        const googleAppsScriptUrl = "https://script.google.com/macros/s/AKfycbyCsxcOhpVvHJgaloIL2daY8ZLVgmbpf2RNQcDI1452eSf5aF1nxztGMNer9XdytPAj/exec";
+        const googleAppsScriptUrl = "https://google.com";
 
         function sendOrderFromWeb(orderId, orderValue, shopName, category, lang) {
             alert(lang === 'bn' ? "আমাদের অনলাইন প্ল্যাটফর্মের মাধ্যমে ডাটা পাঠানো হচ্ছে..." : "Syncing live data packet via online platform...");
@@ -130,26 +134,18 @@
         <div class="section-title-bn">🏪 পার্টনার মার্চেন্ট এবং রিটেল শপ তালিকা</div>
         <div class="grid-v">
             <div class="card-bn">
-                <div style="font-weight:bold; color:#004D40;">নেপোলিটান উড-ফায়ার্ড পিজ্জা</div>
-                <div style="color:#666; margin:3px 0;">পিজ্জা সার্কেল (কালাচাঁদপুর মেইন রোড) থেকে আসল উড-ফায়ার্ড পিজ্জা।</div>
+                <div class="card-title-bn">নেপোলিটান উড-ফায়ার্ড পিজ্জา</div>
+                <div class="card-desc-bn">পিজ্জা সার্কেল (কালাচাঁদপুর মেইন রোড) থেকে প্রিমিয়াম চিজ ও ফ্রেশ বেসিল সমৃদ্ধ আসল উড-ফায়ার্ড পিজ্জা।</div>
                 <div class="price-bn">১,২৫০ টাকা</div>
                 <button onclick="sendOrderFromWeb('SF-WEB-B101', 1250.00, 'Pizza Circle', 'RESTAURANT', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
             </div>
             <div class="card-bn">
-                <div style="font-weight:bold; color:#004D40;">মিনিকেট চাল (বাল্ক প্যাক)</div>
-                <div style="color:#666; margin:3px 0;">কালাচাঁদপুর এলাকার স্থানীয় মুদি দোকান থেকে সরাসরি সংগৃহীত।</div>
+                <div class="card-title-bn">মিনিকেট চাল (বাল্ক প্যাক)</div>
+                <div class="card-desc-bn">কালাচাঁদপুর এলাকার স্থানীয় মুদি দোকান থেকে সরাসরি সংগৃহীত। পাথর মুক্ত সম্পূর্ণ ফ্রেশ নতুন ফসলের চাল।</div>
                 <div class="price-bn">৩,৪০০ টাকা</div>
                 <button onclick="sendOrderFromWeb('SF-WEB-B102', 3400.00, 'Mudir Dokan', 'GROCERY', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
             </div>
             <div class="card-bn">
-                <div style="font-weight:bold; color:#004D40;">জরুরি মেডিসিন باکس কম্বো</div>
-                <div style="color:#666; margin:3px 0;">আশেপাশের এলাকার কেন্দ্রীয় ফার্মেসী স্টক লগের সাথে সরাসরি সিঙ্ক।</div>
+                <div class="card-title-bn">জরুরি মেডিসিন বক্স কম্বো</div>
+                <div class="card-desc-bn">আশেপাশের এলাকার কেন্দ্রীয় ফার্মেসী স্টক লগের সাথে সরাসরি সিঙ্ক করা। লাইফ সেভিং ওষুধ দ্রুত নিরাপদ ডেলিভারি প্যাকেজিং মডিউল।</div>
                 <div class="price-bn">৯৯ টাকা</div>
-                <button onclick="sendOrderFromWeb('SF-WEB-B103', 99.00, 'Central Pharmacy', 'PHARMACY', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
-            </div>
-        </div>
-
-        <div class="section-title-bn">🎓 স্টুডেন্ট ভলান্টিয়ার এবং ইকোসিস্টেম হাব</div>
-        <div class="grid-v">
-            <div class="card-bn">
-                <div style="font-weight:bold;">শিক্ষার্থী ভলান্টিয়ার নিবন্ধন চ্যানেল</div>
