@@ -4,82 +4,38 @@
     <meta charset="UTF-8">
     <title>Shafar Project - Master 10x24 Kiosk Dashboard</title>
     <style>
-        /* ফিক্সড ১ পাতার ১০"x২৪" ব্যানার রেশিও সেটআপ */
-        body { 
-            font-family: sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background: #f0f4f2; 
-            color: #333;
-            overflow-x: hidden;
-        }
-        
-        header { 
-            background: #004D40; 
-            color: #ffffff; 
-            padding: 20px; 
-            text-align: center; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
-        }
+        body { font-family: sans-serif; margin: 0; padding: 0; background: #f0f4f2; color: #333; overflow-x: hidden; }
+        header { background: #004D40; color: #ffffff; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
         header h1 { margin: 0; font-size: 36px; font-weight: bold; }
         .tag { font-size: 15px; color: #FFC107; font-weight: bold; margin-top: 5px; }
-
-        /* প্রধান ২-কলাম লেআউট (বাম পাশে ইংরেজি, ডান পাশে বাংলা) */
-        .main-canvas { 
-            display: grid; 
-            grid-template-columns: 55% 45%; /* ইংরেজি বড় ৫৫%, বাংলা ছোট ৪৫% */
-            max-width: 1400px; 
-            margin: 20px auto; 
-            gap: 20px; 
-            padding: 0 20px;
-        }
-
-        .column-en { 
-            background: #ffffff; 
-            padding: 25px; 
-            border-radius: 12px; 
-            border: 2px solid #004D40;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        
-        .column-bn { 
-            background: #fafafa; 
-            padding: 20px; 
-            border-radius: 12px; 
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        }
-
-        /* ব্যানার ও টাইপোগ্রাফি কন্ট্রোল */
+        .main-canvas { display: grid; grid-template-columns: 55% 45%; max-width: 1400px; margin: 20px auto; gap: 20px; padding: 0 20px; }
+        .column-en { background: #ffffff; padding: 25px; border-radius: 12px; border: 2px solid #004D40; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .column-bn { background: #fafafa; padding: 20px; border-radius: 12px; border: 1px solid #ccc; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
         .banner-en { background: #004D40; color: white; padding: 25px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
         .banner-en h2 { font-size: 26px; margin: 0 0 10px 0; }
         .banner-en p { font-size: 15px; margin: 0 0 15px 0; }
-
         .banner-bn { background: #00796B; color: white; padding: 15px; text-align: center; border-radius: 8px; margin-bottom: 15px; }
         .banner-bn h2 { font-size: 16px; margin: 0 0 5px 0; font-weight: normal; }
         .banner-bn p { font-size: 12px; margin: 0; }
-
-        .btn { display: inline-block; background: #FFC107; color: #004D40; padding: 12px 25px; font-weight: bold; text-decoration: none; border-radius: 5px; margin: 5px; border: none; cursor: pointer; font-size: 14px; }
-        .btn-bn { display: inline-block; background: #FFC107; color: #004D40; padding: 8px 15px; text-decoration: none; border-radius: 4px; margin: 3px; border: none; cursor: pointer; font-size: 11px; font-weight: bold; }
-
+        .btn { display: inline-block; background: #FFC107; color: #004D40; padding: 12px 25px; font-weight: bold; text-decoration: none; border-radius: 5px; margin: 5px; border: none; cursor: pointer; font-size: 14px; text-align: center; }
+        .btn-bn { display: inline-block; background: #FFC107; color: #004D40; padding: 8px 15px; text-decoration: none; border-radius: 4px; margin: 3px; border: none; cursor: pointer; font-size: 11px; font-weight: bold; text-align: center; }
         .section-title-en { color: #004D40; border-bottom: 3px solid #004D40; padding-bottom: 5px; margin: 25px 0 15px 0; font-size: 22px; font-weight: bold; }
         .section-title-bn { color: #00796B; border-bottom: 2px solid #00796B; padding-bottom: 4px; margin: 20px 0 10px 0; font-size: 15px; font-weight: bold; }
-
         .grid-v { display: grid; grid-template-columns: 1fr; gap: 15px; }
         .card { border: 1px solid #e2e8f0; padding: 15px; background: white; border-radius: 8px; text-align: left; }
         .card-bn { border: 1px solid #e2e8f0; padding: 10px; background: white; border-radius: 6px; text-align: left; font-size: 12px; }
-
         .price-en { font-size: 20px; font-weight: bold; color: #004D40; margin: 5px 0; }
         .price-bn { font-size: 14px; font-weight: bold; color: #00796B; margin: 3px 0; }
-
         .notice-en { background: #f9f9f9; border-left: 5px solid #004D40; padding: 15px; margin-top: 25px; font-size: 13px; color: #555; }
         .notice-bn { background: #f9f9f9; border-left: 4px solid #00796B; padding: 10px; margin-top: 15px; font-size: 10px; color: #666; }
     </style>
     <script>
+        // Md Omar Faruque-এর অফিশিয়াল লাইভ ক্লাউড এপিআই লিংক
         const googleAppsScriptUrl = "https://google.com";
 
         function sendOrderFromWeb(orderId, orderValue, shopName, category, lang) {
-            alert(lang === 'bn' ? "ডাটা পাঠানো হচ্ছে..." : "Syncing live data packet...");
+            alert(lang === 'bn' ? "আমাদের অনলাইন প্ল্যাটফর্মের মাধ্যমে ডাটা পাঠানো হচ্ছে..." : "Syncing live data packet via online platform...");
+            
             fetch(googleAppsScriptUrl, {
                 method: "POST",
                 mode: "no-cors",
@@ -95,7 +51,9 @@
                     "geographicZone": "Web 10x24 Kiosk Node"
                 })
             }).then(() => {
-                alert(lang === 'bn' ? "শিটে সফলভাবে আপলোড হয়েছে!" : "Successfully synced to Google Sheet!");
+                alert(lang === 'bn' ? "গুগল শিটে সফলভাবে আপলোড হয়েছে! লাইভ লেজার চেক করুন।" : "Successfully synced to Google Sheet Ledger!");
+            }).catch(err => {
+                alert("Error: " + err);
             });
         }
     </script>
@@ -148,7 +106,7 @@
         </div>
 
         <div class="notice-en">
-            <b>OFFICIAL COMPLIANCE NOTICE:</b> operates under Partnership Act, 1932 bound to a 70% operational and 30% technical split structure under Chairman Md Omar Faruque.
+            <b>OFFICIAL COMPLIANCE NOTICE:</b> Operates under Partnership Act, 1932 bound to a 70% operational and 30% technical split structure under Chairman Md Omar Faruque.
         </div>
     </div>
 
@@ -156,7 +114,7 @@
     <div class="column-bn">
         <div class="banner-bn">
             <h2>১০০% স্বচ্ছ ওপেন-লেজার লজিস্টিক নেটওয়ার্ক</h2>
-            <p>আমাদের অনলাইন প্ল্যাটফর্মের মাধ্যমে ১০ থেকে ১০,০০০+ মার্চেন্ট সার্ভিস ট্র্যাক করুন।</p>
+            <p>আমাদের অনলাইন প্ল্যাটফর্মের মাধ্যমে ১০ থেকে ১০,০০০+ আনলিমিটেড রেস্তোরাঁ, মুদি দোকান ও ফার্মেসী সার্ভিস ট্র্যাক করুন।</p>
             <button onclick="window.open('https://google.com', '_blank')" class="btn-bn">📊 লাইভ পাবলিক লেজার চেক করুন</button>
         </div>
 
@@ -164,23 +122,25 @@
         <div class="grid-v">
             <div class="card-bn">
                 <div style="font-weight:bold; color:#004D40;">নেপোলিটান উড-ফায়ার্ড পিজ্জা</div>
-                <div style="color:#666; margin:3px 0;">পিজ্জা সার্কেল (কালাচাঁদপুর মেইন রোড) থেকে আসল উড-ফায়ার্ড পিজ্জা।</div>
+                <div style="color:#666; margin:3px 0;">পিজ্জা সার্কেল (কালাচাঁদপুর মেইন রোড) থেকে প্রিমিয়াম চিজ ও ফ্রেশ বেসিল সমৃদ্ধ আসল উড-ফায়ার্ড পিজ্জা।</div>
                 <div class="price-bn">১,২৫০ টাকা</div>
                 <button onclick="sendOrderFromWeb('SF-WEB-B101', 1250.00, 'Pizza Circle', 'RESTAURANT', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
             </div>
             <div class="card-bn">
                 <div style="font-weight:bold; color:#004D40;">মিনিকেট চাল (বাল্ক প্যাক)</div>
-                <div style="color:#666; margin:3px 0;">কালাচাঁদপুর এলাকার স্থানীয় মুদি দোকান থেকে সরাসরি সংগৃহীত।</div>
+                <div style="color:#666; margin:3px 0;">কালাচাঁদপুর এলাকার স্থানীয় মুদি দোকান থেকে সরাসরি সংগৃহীত। পাথর মুক্ত সম্পূর্ণ ফ্রেশ নতুন ফসলের চাল।</div>
                 <div class="price-bn">৩,৪০০ টাকা</div>
                 <button onclick="sendOrderFromWeb('SF-WEB-B102', 3400.00, 'Mudir Dokan', 'GROCERY', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
             </div>
             <div class="card-bn">
                 <div style="font-weight:bold; color:#004D40;">জরুরি মেডিসিন বক্স কম্বো</div>
-                <div style="color:#666; margin:3px 0;">আশেপাশের এলাকার কেন্দ্রীয় ফার্মেসী স্টক লগের সাথে লাইভ সিঙ্ক।</div>
+                <div style="color:#666; margin:3px 0;">আশেপাশের এলাকার কেন্দ্রীয় ফার্মেসী স্টক লগের সাথে সরাসরি সিঙ্ক করা। লাইফ সেভিং ওষুধ দ্রুত নিরাপদ ডেলিভারি প্যাকেজিং মডিউল।</div>
                 <div class="price-bn">৯৯ টাকা</div>
                 <button onclick="sendOrderFromWeb('SF-WEB-B103', 99.00, 'Central Pharmacy', 'PHARMACY', 'bn')" class="btn-bn">অর্ডার ও সিঙ্ক টেস্ট</button>
             </div>
         </div>
 
-        <div class="section-title-bn">🎓 স্টুডেন্ট ভলান্টিয়ার এবং ইকোসিস্টেম হাব</div>
+        <div class="section-title-bn">🎓 🎓 স্টুডেন্ট ভলান্টিয়ার এবং ইকোসিস্টেম হাব</div>
         <div class="grid-v">
+            <div class="card-bn">
+                <div style="font-weight:bold;">শিক্ষার্থী ভলান্টিয়ার নিবন্ধন চ্যানেল</div>
